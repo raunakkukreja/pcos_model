@@ -1,0 +1,8 @@
+torch
+torchvision
+Pillow
+matplotlib
+tqdm
+scikit-learn
+seaborn
+grad-cam

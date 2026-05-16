@@ -1,0 +1,11 @@
+this dataset is published and updated by Alisha786 on Kaggle 2 months ago. today is 08-05-2026. link: https://www.kaggle.com/datasets/alisha786/pcos-ultrasound-dataset
+alisha has cleaned the dataset and removed any duplicates images. here is the link of the original dataset from figshare:
+https://doi.org/10.6084/m9.figshare.27682557
+text on websie:
+"dataset posted on 2024-11-13, 04:16 authored by Indirani A
+This dataset contains 12,680 ultrasound images of Polycystic Ovary Syndrome (PCOS) cases, sourced from publicly available datasets. It is intended to support research in the development of machine learning models for automated PCOS detection and the application of Explainable AI techniques. The dataset can be used for training, validation, and testing purposes in medical image analysis, offering diverse cases for exploring classification accuracy in PCOS diagnosis.
+
+Funding
+This dataset was created without any specific funding from public, commercial, or non-profit organizations
+History
+2024-11-13 - First online date, Posted date"

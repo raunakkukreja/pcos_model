@@ -1,0 +1,4 @@
+this dataset was updated 4 years ago by 2 collaborators most likely students named Anagha Choudhari and AISHWARYA KORDE. they have added a description as well:
+"Data folder consist of 'train' and 'test' subfolders containing 2 categories of data 'infected' and 'notinfected' infected : Images of ovaries having PCOS notinfected : Images of healthy ovaries"
+they even have 2 notebooks which are based on this dataset. I have attested an image of the same. 
+link: https://www.kaggle.com/datasets/anaghachoudhari/pcos-detection-using-ultrasound-images

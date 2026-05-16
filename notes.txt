@@ -1,0 +1,176 @@
+═══════════════════════════════════════════════════════════════════════════════
+                        PCOS PROJECT - QUICK REFERENCE GUIDE
+═══════════════════════════════════════════════════════════════════════════════
+
+PROJECT STRUCTURE:
+  Frontend: c:\coding\my projects\PCOS\website\frontend
+  Backend:  c:\coding\my projects\PCOS\website\backend
+  Models:   c:\coding\my projects\PCOS\models
+
+ENVIRONMENTS:
+  Base Conda:      (base)
+  Training Env:    pcod_env (for model training)
+  Backend Env:     ipl_fantasy (for FastAPI server)
+
+═══════════════════════════════════════════════════════════════════════════════
+                               ENVIRONMENT COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ACTIVATE CONDA BASE (if needed):
+   conda activate base
+
+2. LIST ALL CONDA ENVIRONMENTS:
+   conda env list
+
+3. ACTIVATE TRAINING ENVIRONMENT (for model training):
+   conda activate pcod_env
+   .\pcod_env\Scripts\Activate.ps1
+
+4. ACTIVATE BACKEND ENVIRONMENT (for running FastAPI):
+   conda activate ipl_fantasy
+
+═══════════════════════════════════════════════════════════════════════════════
+                                 FRONTEND COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. NAVIGATE TO FRONTEND:
+   cd c:\coding\my projects\PCOS\website\frontend
+
+2. INSTALL DEPENDENCIES:
+   npm install
+
+3. RUN DEVELOPMENT SERVER (Vite):
+   npm run dev
+   * This starts the React app at http://localhost:5173/
+
+4. BUILD FOR PRODUCTION:
+   npm run build
+
+═══════════════════════════════════════════════════════════════════════════════
+                                 BACKEND COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. NAVIGATE TO BACKEND:
+   cd c:\coding\my projects\PCOS\website\backend
+
+2. INSTALL DEPENDENCIES:
+   pip install -r requirements.txt
+
+3. RUN BACKEND SERVER - OPTION A (Using Script - EASIEST):
+   .\run_backend.ps1
+   * This automatically activates ipl_fantasy env and starts the server
+
+4. RUN BACKEND SERVER - OPTION B (Manual):
+   python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   * Flags:
+     --reload     : Auto-restart on code changes
+     --host 0.0.0.0 : Server accessible from other machines
+     --port 8000  : API runs on port 8000
+
+5. ACCESS API DOCUMENTATION:
+   http://localhost:8000/docs (Interactive Swagger UI)
+   http://localhost:8000/openapi.json (OpenAPI schema)
+
+6. TEST PREDICTION ENDPOINT:
+   POST http://localhost:8000/api/v1/predict
+   * Use the Swagger UI at /docs to test
+
+═══════════════════════════════════════════════════════════════════════════════
+                              MODEL TRAINING COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+1. ACTIVATE TRAINING ENVIRONMENT:
+   conda activate pcod_env
+
+2. NAVIGATE TO MODELS DIRECTORY:
+   cd c:\coding\my projects\PCOS\models
+
+3. TRAIN THE MODEL:
+   python train_xgboost.py
+   * This generates xgb_model.pkl (used by backend)
+
+═══════════════════════════════════════════════════════════════════════════════
+                            TYPICAL WORKFLOW (DEVELOPMENT)
+═══════════════════════════════════════════════════════════════════════════════
+
+TERMINAL 1 - RUN BACKEND:
+  cd c:\coding\my projects\PCOS\website\backend
+  .\run_backend.ps1
+  (or: python -m uvicorn app.main:app --reload --host 0.0.0.0 --port 8000)
+
+TERMINAL 2 - RUN FRONTEND:
+  cd c:\coding\my projects\PCOS\website\frontend
+  npm run dev
+
+Then open browser:
+  Frontend: http://localhost:5173/
+  Backend API Docs: http://localhost:8000/docs
+
+═══════════════════════════════════════════════════════════════════════════════
+                                TECH STACK SUMMARY
+═══════════════════════════════════════════════════════════════════════════════
+
+FRONTEND:
+  - React (UI framework)
+  - Vite (build tool & dev server)
+  - Node.js (runtime)
+
+BACKEND:
+  - FastAPI (web framework)
+  - Python (language)
+  - XGBoost (ML model for PCOS risk prediction)
+  - SHAP (model explainability)
+
+DATA SCIENCE:
+  - Pandas (data manipulation)
+  - Scikit-learn (preprocessing)
+  - NumPy (numerical computing)
+
+═══════════════════════════════════════════════════════════════════════════════
+                              USEFUL GIT COMMANDS
+═══════════════════════════════════════════════════════════════════════════════
+
+View current branch:
+  git branch
+
+Create and switch to new branch:
+  git checkout -b branch_name
+
+Switch to existing branch:
+  git checkout branch_name
+
+Check status:
+  git status
+
+Add all changes:
+  git add .
+
+Commit changes:
+  git commit -m "Your message"
+
+Push to remote:
+  git push origin branch_name
+
+═══════════════════════════════════════════════════════════════════════════════
+                            TROUBLESHOOTING QUICK FIXES
+═══════════════════════════════════════════════════════════════════════════════
+
+Port 8000 already in use?
+  netstat -ano | findstr :8000
+  taskkill /PID <PID> /F
+
+npm modules issues?
+  rm -r node_modules
+  npm install
+
+Python environment issues?
+  conda env list
+  conda activate ipl_fantasy
+
+═══════════════════════════════════════════════════════════════════════════════
+https://github.com/sreesh07/pcos-risk-assesment
+
+
+features to add:
+suggest doctors nearby using their location
+google auth
